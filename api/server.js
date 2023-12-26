@@ -1,6 +1,6 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import 'dotenv/config'
+import cookieParser from 'cookie-parser';
 
 // routers
 import authRoutes from './routes/authRoutes.js'
@@ -15,8 +15,10 @@ import reviewRoute from './routes/reviewRoute.js'
 import connectDB from './config/db.js';
 
 const port = process.env.PORT || 8080
+//middlewares
 const app = express();
 app.use(express.json())
+app.use(cookieParser())
 
 connectDB()
 
