@@ -1,0 +1,94 @@
+.featured {
+    max-height: 600px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #013f16;
+    color: white;
+
+    .container {
+        max-width: 1400px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            h1 {
+                font-size: 50px;
+
+                i {
+                    font-weight: 300;
+                }
+            }
+
+            .search {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: white;
+                    border-radius: 5px;
+                .searchInput {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    svg {
+                        color: rgb(104, 104, 104);
+                        font-size: 23px;
+                    }
+
+                    input {
+                        border: none;
+                        outline: none;
+                        color: rgb(99, 99, 99);
+                        font-size: .9rem;
+                    }
+
+                }
+
+                button {
+                    width: 120px;
+                    height: 50px;
+                    border: none;
+                    background-color: #1dbf73;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+
+            .popular {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                span {
+
+                }
+
+                button {
+                    color: white;
+                    background-color: transparent;
+                    border: 1px solid white;
+                    padding: 5px 10px;
+                    border-radius: 20px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    text-wrap: nowrap;
+                }
+            }
+        }
+
+        .right {
+            height: 100% !important;
+
+            img {
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}

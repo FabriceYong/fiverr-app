@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './navbar.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
   const [active, setActive] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
 
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false)
@@ -22,15 +23,16 @@ const Navbar = () => {
     id: 1,
     username: 'John Doe',
     isSeller: true,
+    img: "./img/james-bond.jpg"
   }
 
   return (
-    <div className={active ? 'navbar active' : 'navbar'}>
+    <div className={active || pathname !== '/' ? 'navbar active' : 'navbar'}>
       <div className="container">
         <div className="logo">
-          {/* <Link to={'/'}> */}
+          <Link to={'/'}>
           <span className="text">fiverr</span>
-          {/* </Link> */}
+          </Link>
 
           <span className="dot">.</span>
         </div>
@@ -44,7 +46,7 @@ const Navbar = () => {
           {currentUser && (
             <div className="user" onClick={() => setOpen(!open)}>
               <img
-                src="https://d2w9m16hs9jc37.cloudfront.net/dimg/blog/2023/07/hockerty_daniel_craig_james_bond_navy_blue_suit_2ce53994_eb83_4299_841e_52582b71d43c.jpg"
+                src={currentUser?.img}
                 alt="profile photo"
               />
               <span>{currentUser.username}</span>
@@ -52,20 +54,20 @@ const Navbar = () => {
                 <div className="options">
                   {currentUser?.isSeller && (
                     <>
-                      <span>Gigs</span>
-                      <span>Add New Gig</span>
+                      <Link className='link' to={'/gigs'}>Gigs</Link>
+                      <Link className='link' to={'/add'}>Add New Gig</Link>
                     </>
                   )}
-                  <span>Orders</span>
-                  <span>Messages</span>
-                  <span>Logout</span>
+                  <Link className='link' to={'/orders'}>Orders</Link>
+                  <Link className='link' to={'/messages'}>Messages</Link>
+                  <Link className='link' to={'/logout'}>Logout</Link>
                 </div>
               )}
             </div>
           )}
         </div>
       </div>
-      {active && (
+      {active || pathname !== '/' && (
         <>
           <hr />
           <div className="menu">
