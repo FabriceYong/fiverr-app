@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #013914;
-    color: rgb(240, 240, 240);
+    color: rgb(219, 219, 219);
     transition: all .5s easet;
     position: sticky;
     top: 0;
@@ -11,7 +11,7 @@
 
     &.active {
         background-color: white;
-        color: rgb(75, 75, 75);
+        color: rgb(99, 99, 99);
         transition: all .3s ease-in-out;
     }
 
@@ -38,7 +38,6 @@
             align-items: center;
             gap: 24px;
             font-weight: 500;
-            font-family: "Hepta Slab", sans-serif;
 
             .user {
                 display: flex;
@@ -51,6 +50,10 @@
                     height: 32px;
                     border-radius: 50%;
                     object-fit: cover;
+                    cursor: pointer;
+                }
+
+                span {
                     cursor: pointer;
                 }
 

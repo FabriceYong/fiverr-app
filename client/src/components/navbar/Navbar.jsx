@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const currentUser = {
     id: 1,
-    username: 'John Doe',
+    username: 'James bond',
     isSeller: true,
     img: './img/james-bond.jpg',
   }
