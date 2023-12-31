@@ -4,7 +4,7 @@
     align-items: center;
     background-color: #013914;
     color: rgb(219, 219, 219);
-    transition: all .5s easet;
+    transition: all .5s ease;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -16,7 +16,7 @@
     }
 
     .container {
-        width: 85vw;
+        width: 82vw;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -102,7 +102,7 @@
     }
 
     .menu {
-        width: 1400px;
+        width: 82vw;
         display: flex;
         justify-content: space-between;
         padding: 10px 10px;

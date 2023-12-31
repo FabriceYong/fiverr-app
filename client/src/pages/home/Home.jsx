@@ -4,7 +4,13 @@ import Featured from '../../components/featured/Featured'
 import TrustedBy from '../../components/trustedBy/trustedBy'
 import CatCards from '../../components/categoryCards/CatCards'
 import Slide from '../../components/Slide/Slide'
-import { cards, guides, projects, testimonials } from '../../data/data'
+import {
+  cards,
+  guides,
+  projects,
+  testimonials,
+  mainCategories,
+} from '../../data/data'
 import { CiCircleCheck } from 'react-icons/ci'
 import { HiBadgeCheck } from 'react-icons/hi'
 import ProjectCard from '../../components/projectCards/ProjectCard'
@@ -69,6 +75,19 @@ const Home = () => {
             <div className="item">
               <video src="./img/video.mp4" controls muted autoPlay loop></video>
             </div>
+          </div>
+        </div>
+        <div className="categories-parent">
+          <h1>You need it, we've got it</h1>
+          <div className="container">
+            {mainCategories.map((category) => (
+              <div className="item">
+                <div className="icon">
+                  <img src={category.img} alt="main category" />
+                </div>
+                <h2>{category.title}</h2>
+              </div>
+            ))}
           </div>
         </div>
         <div className="features dark">
@@ -157,7 +176,7 @@ const Home = () => {
         </div>
         <div className="slides-parent">
           <h1>Inspiring work made on Fiverr</h1>
-          <Slide slidesToShow={5} arrowsScroll={4}>
+          <Slide slidesToShow={4} arrowsScroll={4}>
             {projects.map((project) => (
               <ProjectCard key={project.id} item={project} />
             ))}

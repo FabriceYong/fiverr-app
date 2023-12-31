@@ -269,3 +269,57 @@ export const testimonials = [
       "It's extremely exciting that Fiverr has freelancers from all over the world -- it broadens the talent pool. One of the best things about Fiverr is that while we're sleeping someone's working.",
   },
 ]
+
+
+export const mainCategories = [
+  {
+    id: 1,
+    img: './icons/graphics-design.svg',
+    title: 'Graphics & Design',
+  },
+  {
+    id: 2,
+    img: './icons/online-marketing.svg',
+    title: 'Digital Marketing',
+  },
+  {
+    id: 1,
+    img: './icons/writing-translation.svg',
+    title: 'Writing & Translation',
+  },
+  {
+    id: 1,
+    img: './icons/video-animation.svg',
+    title: 'Video & Animation',
+  },
+  {
+    id: 1,
+    img: './icons/music-audio.svg',
+    title: 'Music & Audio',
+  },
+  {
+    id: 1,
+    img: './icons/programming.svg',
+    title: 'Programming & Tech',
+  },
+  {
+    id: 1,
+    img: './icons/business.svg',
+    title: 'Business',
+  },
+  {
+    id: 1,
+    img: './icons/lifestyle.svg',
+    title: 'Lifestyle',
+  },
+  {
+    id: 1,
+    img: './icons/data.svg',
+    title: 'Data',
+  },
+  {
+    id: 1,
+    img: './icons/photography.svg',
+    title: 'Photography',
+  },
+]
