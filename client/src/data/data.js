@@ -3,49 +3,61 @@ export const cards = [
     id: 1,
     title: 'AI Artists',
     desc: 'Add talent to AI',
-    img: 'https://images.pexels.com/photos/7532110/pexels-photo-7532110.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161247/ai-artists-2x.png',
   },
   {
     id: 2,
     title: 'Logo Design',
     desc: 'Build yor brand',
-    img: 'https://images.pexels.com/photos/11295165/pexels-photo-11295165.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161257/logo-design-2x.png',
   },
   {
     id: 3,
     title: 'WordPress',
     desc: 'Customize your site',
-    img: 'https://images.pexels.com/photos/4371669/pexels-photo-4371669.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161257/wordpress-2x.png',
   },
   {
     id: 4,
     title: 'Voice Over',
     desc: 'Share your message',
-    img: 'https://images.pexels.com/photos/7608079/pexels-photo-7608079.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161253/voice-over-2x.png',
   },
   {
     id: 5,
     title: 'Video Explainer',
     desc: 'Engage your audience',
-    img: 'https://images.pexels.com/photos/13388047/pexels-photo-13388047.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161245/animated-explainer-2x.png',
   },
   {
     id: 6,
     title: 'Social Media',
     desc: 'Reach more customers',
-    img: 'https://images.pexels.com/photos/11378899/pexels-photo-11378899.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161249/social-2x.png',
   },
   {
     id: 7,
     title: 'SEO',
     desc: 'Unlock growth online',
-    img: 'https://images.pexels.com/photos/4820241/pexels-photo-4820241.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/27f914ed7984fdd2d55aa1fb5e74bd6a-1690384243592/seo-2x.png',
   },
   {
     id: 8,
     title: 'Illustration',
     desc: 'Color you dreams',
-    img: 'https://images.pexels.com/photos/15032623/pexels-photo-15032623.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161236/illustration-2x.png',
+  },
+  {
+    id: 9,
+    title: 'Translation',
+    desc: 'Go Global',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161247/translation-2x.png',
+  },
+  {
+    id: 10,
+    title: 'Data entry',
+    desc: 'Learn your business',
+    img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161248/data-entry-2x.png',
   },
 ]
 
@@ -213,5 +225,47 @@ export const guides = [
     id: 6,
     img: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_430,dpr_1.0/v1/attachments/generic_asset/asset/10f680cb84a2f3ef4473ecfdede3a1ba-1593438129320/business%20logo%20design-fiverr%20guide.jpg',
     desc: 'Create a logo for your business',
+  },
+]
+
+export const testimonials = [
+  {
+    id: 1,
+    name: 'Caitlin Tormey',
+    job: 'Chief Commercial Officer',
+    company:
+      'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/naadam-logo-x2.a79031d.png',
+    testimony:
+      "We've used Fiver for Shopify we development, graphic desing, and backend web development. Working with Fiverr makes my job a little easier every day.",
+    video: './videos/caitlin.mp4',
+  },
+  {
+    id: 2,
+    name: 'Tim and Dan Joo',
+    job: 'Co-Founders',
+    company:
+      'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/haerfest-logo-x2.934ab63.png',
+    testimony:
+      "When you want to create a business bigger than yourself, you need a lot of help. that's what Fiverr does.",
+    video: './videos/tim-and-dan.mp4',
+  },
+  {
+    id: 3,
+    name: 'Brighid Gannon(DNP, PMHNP-BC)',
+    job: 'Co-Founder',
+    company:
+      'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/lavender-logo-x2.3fff9e7.png',
+    testimony:
+      'We used Fiverr for SEO, our logo, website, copy, animated videos -- literally everything. it was like working with a human right next to you versus being across the world.',
+    video: './videos/brighid-Gannon.mp4',
+  },
+  {
+    id: 4,
+    name: 'Kay Kim',
+    job: 'Co-Founder',
+    company:
+      'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/rooted-logo-x2.7da3bc9.png',
+    testimony:
+      "It's extremely exciting that Fiverr has freelancers from all over the world -- it broadens the talent pool. One of the best things about Fiverr is that while we're sleeping someone's working.",
   },
 ]

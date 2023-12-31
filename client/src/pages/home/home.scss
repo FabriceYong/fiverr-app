@@ -1,22 +1,24 @@
 .home-parent {
   .slides-parent {
-    padding: 96px 32px;
+    padding: 96px 32px 0 32px;
     margin: 0 90px;
 
     h1 {
       margin-bottom: 25px;
       color: #444;
+      text-align: start;
     }
   }
 
   .home {
     .slides-parent {
-      padding: 96px 32px;
+      padding: 96px 32px 0 32px;
       margin: 0 90px;
 
       h1 {
         margin-bottom: 25px;
         color: #444;
+        text-align: start;
       }
     }
 
@@ -108,7 +110,7 @@
       }
 
       .container {
-        max-width: 1400px;
+        max-width: 85vw;
         width: 100%;
         display: flex;
         align-items: center;
@@ -120,7 +122,7 @@
           gap: 15px;
 
           &:first-child {
-            flex: 2;
+            flex: 1.8;
           }
 
           &:last-child {
@@ -160,7 +162,7 @@
           }
         }
         video {
-          width: 720px;
+          width: 800px;
         }
       }
     }
@@ -170,11 +172,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      max-width: 1400px;
+      max-width: 85vw;
       max-height: 300px;
       margin: 90px auto;
       overflow: hidden;
       position: relative;
+        padding: 0 30px;
 
       .container {
         display: flex;
@@ -240,12 +243,14 @@
 
     .banner {
       position: relative;
+      margin-top: 120px;
       .container {
+        width: 85vw;;
         .left {
           position: absolute;
-          top: 40%;
+          top: 35%;
           bottom: 50%;
-          left: 10%;
+          left: 13%;
           h1 {
             font-size: 2.8rem;
             color: #f1fdf7;

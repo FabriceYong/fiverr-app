@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 const ProjectCard = ({ item }) => {
   return (
     <Link to={'/'} className="link">
+      <div className='project'>
         <div className="projectCards">
           <img src={item.img} alt="project image" />
           <div className="info">
@@ -15,6 +16,7 @@ const ProjectCard = ({ item }) => {
             </div>
           </div>
         </div>
+      </div>
     </Link>
   )
 }

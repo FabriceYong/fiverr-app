@@ -7,10 +7,11 @@
     color: white;
 
     .container {
-        max-width: 1400px;
+        max-width: 85vw;
         width: 100%;
         display: flex;
         align-items: center;
+        padding:  0 30px;
 
         .left {
             display: flex;

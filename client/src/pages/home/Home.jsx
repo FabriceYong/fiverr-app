@@ -4,12 +4,13 @@ import Featured from '../../components/featured/Featured'
 import TrustedBy from '../../components/trustedBy/trustedBy'
 import CatCards from '../../components/categoryCards/CatCards'
 import Slide from '../../components/Slide/Slide'
-import { cards, guides, projects } from '../../data/data'
+import { cards, guides, projects, testimonials } from '../../data/data'
 import { CiCircleCheck } from 'react-icons/ci'
 import { HiBadgeCheck } from 'react-icons/hi'
 import ProjectCard from '../../components/projectCards/ProjectCard'
 import GuideCard from '../../components/guides/GuideCard'
 import { Link } from 'react-router-dom'
+import Testimonials from '../../components/testimonials/Testimonials'
 
 const Home = () => {
   return (
@@ -128,6 +129,13 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        <Slide slidesToShow={1} arrowsScroll={1}>
+          {testimonials.map((testimonial) => (
+            <Testimonials key={testimonial.id} item={testimonial} />
+          ))}
+        </Slide>
+
         <div className="logo-maker">
           <div className="container">
             <div className="left">
@@ -149,7 +157,7 @@ const Home = () => {
         </div>
         <div className="slides-parent">
           <h1>Inspiring work made on Fiverr</h1>
-          <Slide slidesToShow={4} arrowsScroll={4}>
+          <Slide slidesToShow={5} arrowsScroll={4}>
             {projects.map((project) => (
               <ProjectCard key={project.id} item={project} />
             ))}

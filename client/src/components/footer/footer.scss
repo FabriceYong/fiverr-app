@@ -1,0 +1,98 @@
+.footer {
+    margin: 90px auto 30px auto;
+    max-width: 85vw;
+    border-top: 1px solid #e2e2e2;
+
+    .container {
+        width: 100%;
+        padding: 50px 40px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #e0e0e0;
+        
+        ul {
+            
+            h3 {
+                font-size: 1.25rem;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            li {
+                margin-bottom: 15px;
+                line-height: 24px;
+                font-size: 1.07rem;
+                color: #666;
+            }
+        }
+    }
+
+    .footer-end {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 30px;
+        .left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+
+            h1 {
+                font-weight: 900;
+                letter-spacing: -2px;
+                color: #797979;
+
+                span {
+                    font-size: 12px;
+                }
+            }
+            h4 {
+                display: flex;
+                gap: 5px;
+                color: #b1b1b1;
+                font-size: 1rem;
+                font-weight: 500;
+                text-wrap: nowrap;
+            }
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            color: #777;
+
+            svg {
+                font-size: 1.6rem;
+                color: #777;
+            }
+            img {
+                width: 35px;
+                height: 35px;
+                filter: grayscale(10%);
+                opacity: .5;
+                border: 1px solid #555;
+                padding: 6px;
+                border-radius: 50%;
+            }
+
+            .right-end {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+
+                h3 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 5px;
+                    text-wrap: nowrap;
+                    font-size: .9rem;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

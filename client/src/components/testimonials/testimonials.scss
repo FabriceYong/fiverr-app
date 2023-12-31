@@ -1,0 +1,51 @@
+.testimonials {
+    max-width: 85vw;
+    width: 100% !important;
+    margin: 100px auto 50px auto;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5rem;
+
+        .left {
+            flex: 1;
+
+            video {
+                width: 520px;
+                border-radius: 5px;
+            }
+        }
+
+        .right {
+            flex: 3;
+
+            .info {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 10px;
+
+                h2 {
+                    font-size: 1.4rem;
+                    color: #666;
+                    border-right: 1px solid #c2c2c2;
+                    padding-right: 15px;
+                    font-weight: 400;
+                }
+
+                img {
+                    width: 90px;
+                }
+            }
+            i {
+                font-family: 'Bona Nova', sans-serif;
+                font-size: 2rem;
+                font-weight: 600;
+                color: #003912;
+                line-height: 45px;
+            }
+        }
+    }
+}
