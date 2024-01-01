@@ -11,17 +11,27 @@
 }
 
 body {
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto','Helvitica Neuer', sans-serif;
+}
+
+button {
+    transition: all 200ms ease-in-out;
+}
+
+button:hover {
+    opacity: .9;
 }
 
 button:active {
     transform: scale(.98);
 }
 
-.container {
+
+
+/* .container {
     max-width: 90vw;
     margin: 0 auto;
-}
+} */
 
 li {
     list-style: none;
