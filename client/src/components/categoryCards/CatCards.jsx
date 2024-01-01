@@ -3,8 +3,9 @@ import './catCards.scss'
 import { Link } from 'react-router-dom'
 
 const CatCards = ({ item }) => {
+  
   return (
-    <Link to={'/gigs/cat=design'}>
+    <Link to={'/gigs?cat=design'}>
      <div className='catCards'>
         <img src={item.img} alt="" />
         <span className="desc">{item.desc}</span>
