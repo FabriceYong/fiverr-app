@@ -311,9 +311,9 @@
     // ====================== Banner ====================
     .banner {
       position: relative;
-      margin-top: 120px;
+      margin: 120px auto;
+      width: 82vw;
       .container {
-        width: 82vw;
         .left {
           position: absolute;
           top: 35%;
@@ -345,6 +345,10 @@
             height: 380px;
             width: 100%;
             object-fit: cover;
+
+            &:hover {
+              transform: unset;
+            }
           }
         }
       }

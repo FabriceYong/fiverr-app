@@ -1,0 +1,73 @@
+.add {
+    display: flex;
+    justify-content: center;
+    max-width: 82vw;
+    width: 100%;
+    margin: 20px auto;
+
+    .container {
+        padding: 50px 0;
+        width: 100%;
+
+        h1 {
+            color: gray;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .sections {
+            display: flex;
+            justify-content: space-between;
+            gap: 100px;
+
+            .left, 
+            .right {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: space-between;
+                flex: 1;
+                font-family: "Montserrat" sans-serif;
+
+                label {
+                    color: gray;
+                    font-size: 18px;
+                }
+
+                input, 
+                select,
+                textarea {
+                    padding: 15px 20px;
+                    border: 1px solid #bbb8b8;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                    color: #3f3e3e;
+
+                    &::placeholder {
+                        font-size: 1rem;
+                        font-family: inherit;
+                    }
+
+                    &:focus {
+                        background-color: #dbc2c2b9;
+                    }
+                }
+
+                textarea {
+                    font-family: inherit;
+                    resize: none;
+                }
+
+                button {
+                    border: none;
+                    padding: 15px;
+                    background-color: black;
+                    color: white;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}

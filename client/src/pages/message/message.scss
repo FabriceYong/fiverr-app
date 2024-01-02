@@ -1,0 +1,110 @@
+.message {
+    display: flex;
+    // justify-content: center;
+    max-width: 79vw;
+    width: 100%;
+    margin: auto ;
+
+    .container {
+        margin: 50px;
+        padding: 20px;
+        width: 100%;
+        .breadCrumbs {
+            font-weight: 300;
+            font-size: 13px;
+            color: #555;
+
+        }
+        .messages {
+            margin: 30px 0;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 500px;
+            overflow: scroll;
+
+            .item {
+                display: flex;
+                gap: 20px;
+                max-width: 600px;
+                font-size: 18px;
+                align-self: flex-start;
+
+                &.owner {
+                    flex-direction: row-reverse;
+                    align-self: flex-end;
+
+                    p {
+                        border-radius: 20px 0 20px 20px;
+                        background-color: rgb(65, 188, 225);
+                        color: white;
+                    }
+                }
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                p {
+                    padding: 20px;
+                    background-color: rgb(218, 203, 203);
+                    border-radius: 0 20px 20px;
+                    color: #686868;
+                    font-weight: 300;
+                }
+            }
+        }
+
+        hr {
+            height: 0;
+            border: .5px solid rgb(228, 228, 228);
+            margin-bottom: 15px;
+        }
+
+        .write {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+
+            textarea {
+                width: 80%;
+                height: 60px;
+                padding: 10px;
+                border: 1px solid rgb(223, 223, 223);
+                border-radius: 5px;
+                font-size: 1.1rem;
+                color: #919191;
+                font-family: "Montserrat", sans-serif;
+                resize: none;
+                
+
+                &::placeholder {
+                    font-size: 1.1rem;
+                    font-family: inherit;
+                    color: #919191;
+                }
+
+                &:focus {
+                    border: 1px solid #962f2191;
+                }
+            }
+
+            button {
+                font-weight: 500;
+                color: #962f2191;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+            }
+           
+        }
+    }
+}

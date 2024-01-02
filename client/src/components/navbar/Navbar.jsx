@@ -23,7 +23,7 @@ const Navbar = () => {
     id: 1,
     username: 'James bond',
     isSeller: true,
-    img: './img/james-bond.jpg',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIEQ8A5yC7RR3LH2Ah9K-YZ7Yn9HshI92XvQ&usqp=CAU',
   }
 
   return (

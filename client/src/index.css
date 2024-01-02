@@ -19,7 +19,7 @@ button {
 }
 
 button:hover {
-    opacity: .9;
+    opacity: .87;
 }
 
 button:active {
@@ -35,4 +35,12 @@ button:active {
 
 li {
     list-style: none;
+}
+
+img {
+    transition: all 200ms ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.08);
 }

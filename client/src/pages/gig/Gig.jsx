@@ -122,7 +122,7 @@ const Gig = () => {
               <div className="item">
                 <div className="user">
                   <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaJajMdDyfL6WCyv78S_PkxaC0Sicz2BCivA&usqp=CAU"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ9AMZxFPtoxUHj04B6uFm_rcl27osHxytYg&usqp=CAU"
                     alt=""
                   />
                   <div className="info">
@@ -166,7 +166,7 @@ const Gig = () => {
               <div className="item">
                 <div className="user">
                   <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaJajMdDyfL6WCyv78S_PkxaC0Sicz2BCivA&usqp=CAU"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ9AMZxFPtoxUHj04B6uFm_rcl27osHxytYg&usqp=CAU"
                     alt=""
                   />
                   <div className="info">
@@ -210,7 +210,7 @@ const Gig = () => {
               <div className="item">
                 <div className="user">
                   <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaJajMdDyfL6WCyv78S_PkxaC0Sicz2BCivA&usqp=CAU"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ9AMZxFPtoxUHj04B6uFm_rcl27osHxytYg&usqp=CAU"
                     alt=""
                   />
                   <div className="info">
