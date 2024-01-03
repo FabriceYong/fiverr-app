@@ -21,11 +21,25 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px 30px;
+
+        .hamburger-menu {
+                font-size: 2.3rem;
+                font-weight: 700;
+                display: none;
+            }
+
         .logo {
             font-size: 36px;
             font-weight: bold;
             font-family: "Montserrat", sans-serif;
             letter-spacing: -3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            
+
             .text{
 
             }
@@ -115,4 +129,42 @@
             font-size: .9rem;
         }
     }
+
 }
+// @media screen and (max-width: 600px) {
+//     .navbar {
+//         display: flex;
+//         flex-direction: column;
+//         background-color: white;
+//         justify-content: space-between;
+//         color: #444;
+
+
+//         .container {
+//             display: flex;
+//             align-items: normal;
+
+//             .logo {
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: space-between;
+
+//                 .hamburger-menu {
+//                     display: block;
+//                     float: left;
+    
+//                 }
+//             }
+
+
+//             .links {
+//                 display: flex;
+//                 flex-direction: column;
+//                 max-height: 300px;
+//                 align-items: center;
+//                 height: fit-content;
+//             }
+//         }
+
+//     }
+// }

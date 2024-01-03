@@ -10,6 +10,7 @@ import gigRoute from './routes/gigRoute.js'
 import conversationRoute from './routes/conversationRoute.js'
 import orderRoute from './routes/orderRoute.js'
 import reviewRoute from './routes/reviewRoute.js'
+import cors from 'cors'
 
 // database connection configuration
 import connectDB from './config/db.js';
@@ -36,8 +37,9 @@ app.use((err, req, res, next) => {
     const message = err.message || 'Something went wrong'
     
     return res.status(statusCode).send(message)
- })
+})
+
+app.use(cors({ origin: 'http://localhost:5173', credentials: true}))
 
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`))
-

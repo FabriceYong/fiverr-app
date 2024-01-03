@@ -85,6 +85,7 @@
 
         .right {
             height: 100% !important;
+            position: relative;
 
             img {
                 height: 100%;
@@ -92,6 +93,46 @@
 
                 &:hover {
                     transform: unset;
+                }
+            }
+
+            .user-info-overlay {
+                position: absolute;
+                bottom: 20px;
+                right: -20px;
+                // font-size: 2rem;
+                color: white;
+                background-color: rgba(187, 180, 180, 0.151);
+                padding: 15px; 
+                text-wrap: nowrap;
+                border: 1px solid rgba(207, 197, 197, 0.418);
+                border-radius: 50px;
+                box-shadow: 0 0 16px rgba(0, 0, 0, 0.411);
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 15px;
+                flex-direction: row;
+                .left {
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                    }
+
+                }
+                
+                .job-title {
+                    p {
+                        font-size: .87rem;
+                    }
+                    span {
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        margin-top: 8px;
+                    }
                 }
             }
         }

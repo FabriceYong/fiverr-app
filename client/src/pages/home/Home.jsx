@@ -81,7 +81,7 @@ const Home = () => {
           <h1>You need it, we've got it</h1>
           <div className="container">
             {mainCategories.map((category) => (
-              <div className="item">
+              <div className="item" key={category.id}>
                 <div className="icon">
                   <img src={category.img} alt="main category" />
                 </div>

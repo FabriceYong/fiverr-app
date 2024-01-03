@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './navbar.scss'
 import { Link, useLocation } from 'react-router-dom'
+import { IoMdMenu } from 'react-icons/io'
+import newRequest from '../../utils/newRequest'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const [active, setActive] = useState(false)
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false)
@@ -19,33 +23,56 @@ const Navbar = () => {
     }
   }, [])
 
-  const currentUser = {
-    id: 1,
-    username: 'James bond',
-    isSeller: true,
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIEQ8A5yC7RR3LH2Ah9K-YZ7Yn9HshI92XvQ&usqp=CAU',
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
+  const handleLogout = async () => {
+    try {
+     await newRequest.post('/auth/logout')
+      localStorage.setItem('currentUser', null)
+      navigate('/')
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (
     <div className={active || pathname !== '/' ? 'navbar active' : 'navbar'}>
       <div className="container">
         <div className="logo">
+          <div className="hamburger-menu">
+            <IoMdMenu />
+          </div>
           <Link to={'/'}>
             <span className="text">fiverr</span>
+            <span className="dot">.</span>
           </Link>
-
-          <span className="dot">.</span>
         </div>
+
         <div className="links">
           <span>Fiverr Business</span>
           <span>Explore</span>
           <span>English</span>
-          <span>Sign in</span>
+          {!currentUser ? (
+            <Link to={'/login'}>
+              <span>Sign in</span>
+            </Link>
+          ) : (
+            <Link onClick={handleLogout}>
+              <span>Log out</span>
+            </Link>
+          )}
           {!currentUser && <span>Become a Seller</span>}
-          {!currentUser && <button>Join</button>}
+          {!currentUser && (
+            <Link to={'/register'}>
+              <button>Join</button>
+            </Link>
+          )}
           {currentUser && (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img src={currentUser?.img} alt="profile photo" />
+              <img
+                src={currentUser?.img || '/img/james-bond.jpg'}
+                alt="profile photo"
+              />
               <span>{currentUser.username}</span>
               {open && (
                 <div className="options">
@@ -65,7 +92,7 @@ const Navbar = () => {
                   <Link className="link" to={'/messages'}>
                     Messages
                   </Link>
-                  <Link className="link" to={'/logout'}>
+                  <Link className="link" onClick={handleLogout}>
                     Logout
                   </Link>
                 </div>
