@@ -5,6 +5,10 @@ const GigSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    title: {
+        type: String,
+        required: true
+    },
     desc: {
         type: String,
         required: true,
@@ -59,4 +63,4 @@ const GigSchema = mongoose.Schema({
     }
 }, { timestamps: true})
 
-export default mongoose.model("GigSchema", GigSchema)
+export default mongoose.model("Gig", GigSchema)
