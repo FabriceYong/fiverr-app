@@ -28,6 +28,9 @@ const userSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    phone: {
+        type: String,
+    },
     isSeller: {
         type: Boolean,
         default: false

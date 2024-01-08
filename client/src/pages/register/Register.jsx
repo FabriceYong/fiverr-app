@@ -1,128 +1,157 @@
 import React, { useState } from 'react'
-import './register.scss'
-import { RxSwitch } from 'react-icons/rx'
+import './Register.scss'
 import newRequest from '../../utils/newRequest'
+import { Link, useNavigate } from 'react-router-dom'
+import { FaEyeSlash, FaEye } from 'react-icons/fa'
+import upload from '../../utils/upload'
 
+function Register() {
+  const [showPassword, setShowPassword] = useState(false)
+  const [file, setFile] = useState(null)
+  const [user, setUser] = useState({
+    username: '',
+    email: '',
+    password: '',
+    img: '',
+    country: '',
+    isSeller: false,
+    phone: '',
+    desc: '',
+  })
+  const { username, email, password, img, country, isSeller, desc, phone } = user
 
-const Register = () => {
-    const [formData, setFormData] = useState({ username: '', password: '', email: '', img: '', country: '', phone: '', desc: '', isSeller: false })
-    const { username, email, password, img, country, phone, desc, isSeller } = formData
+  const navigate = useNavigate()
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const res = await newRequest.post('/auth/register', {password, email, username, img, country, phone, desc})
-        const user = res.data
-        console.log(user)
+  const handleChange = (e) => {
+    setUser({
+      ...user, 
+      [e.target.id]: e.target.value
+    })
+  }
+
+  const handleSeller = (e) => {
+    setUser({
+      ...user,
+      isSeller: e.target.checked
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    
+    const url = await upload(file)
+    try{
+      await newRequest.post('/auth/register', {
+        ...user, img: url
+      })
+      navigate('/')
+    } catch(err) {
+      console.log(err)
     }
 
-    const handleChange = (e) => {
-        if(e.target.type === 'file') {
-            setFormData({
-                ...formData,
-                [e.target.file]: e.target.value
-            })
-        }
-        setFormData({ ...formData, [e.target.id]: e.target.value})
-    }
+  }
+
+
   return (
     <div className="register">
-      <div className="container">
+      <form onSubmit={handleSubmit}>
         <div className="left">
           <h1>Create a new account</h1>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="username">Username</label>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            value={username}
+            placeholder="e.g. John Doe"
+            onChange={handleChange}
+          />
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            value={email}
+            placeholder="e.g. johndoe@example.com"
+            onChange={handleChange}
+          />
+          <label htmlFor="password">Password</label>
+          {showPassword ? (
+            <div className="hide">
               <input
-                type="text"
-                id="username"
-                value={username}
-                placeholder="John Doe"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                placeholder="johndoe@example.com"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
+                name="password"
                 id="password"
                 value={password}
-                placeholder="********"
+                type="text"
+                placeholder="*********"
                 onChange={handleChange}
               />
+              <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
             </div>
-            <div>
-              <label htmlFor="img">Profile Picture</label>
-              <input type="file" id="img" />
-            </div>
-            <div>
-              <label htmlFor="country">Country</label>
+          ) : (
+            <div className="show">
               <input
-                type="country"
-                id="country"
-                name="country"
-                value={country}
-                placeholder="USA"
+                name="password"
+                id="password"
+                value={password}
+                type="password"
+                placeholder="*********"
                 onChange={handleChange}
               />
+              <FaEye onClick={() => setShowPassword(!showPassword)} />
             </div>
-            <button>Register</button>
-          </form>
+          )}
+          <label htmlFor="">Profile Picture</label>
+          <input
+            type="file"
+            multiple
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+          <label htmlFor="country">Country</label>
+          <input
+            id="country"
+            name="country"
+            type="text"
+            value={country}
+            placeholder="USA"
+            onChange={handleChange}
+          />
+          <button type="submit">Register</button>
         </div>
         <div className="right">
           <h1>I want to become a seller</h1>
-          <form>
-            <div className="toggle">
-              <label htmlFor="switch">Activate the seller account</label>
-              <label className="switch">
-                <input type="checkbox" />
-                {isSeller ? (
-                  <span onClick={() => setFormData({ ...formData, isSeller: !isSeller})} className="true">
-                    <RxSwitch />
-                  </span>
-                ) : (
-                  <span onClick={() => setFormData({ ...formData, isSeller: !isSeller})} className="false">
-                    <RxSwitch />
-                  </span>
-                )}
-              </label>
-            </div>
-            <div>
-              <label htmlFor="phone">Phone Number</label>
-              <input
-                type="tel"
-                min={1}
-                id="phone"
-                name="phone"
-                value={phone}
-                placeholder="+1 234 567 89"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="desc">Description</label>
-              <textarea
-                name="desc"
-                id="desc"
-                cols="30"
-                rows="10"
-                value={desc}
-                placeholder="Add a short description of yourself"
-                onChange={handleChange}
-              ></textarea>
-            </div>
-          </form>
+          <div className="toggle">
+            <label htmlFor="">Activate the seller account</label>
+            <label className="switch">
+              <input type="checkbox" onChange={handleSeller} value={isSeller} />
+              <span className="slider round"></span>
+            </label>
+          </div>
+          <label htmlFor="phone">Phone Number</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            value={phone}
+            placeholder="+1 234 567 89"
+            onChange={handleChange}
+          />
+          <label htmlFor="desc">Description</label>
+          <textarea
+            placeholder="A short description of yourself"
+            name="desc"
+            id="desc"
+            cols="30"
+            rows="7"
+            value={desc}
+            onChange={handleChange}
+          ></textarea>
+
+          <p>
+            Already have an account? <Link to={'/login'}>Login here</Link>
+          </p>
         </div>
-      </div>
+      </form>
     </div>
   )
 }
