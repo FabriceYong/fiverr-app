@@ -1,17 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import './gigs.scss'
 import { FaAngleDown, FaChevronDown } from 'react-icons/fa'
 import { gigs } from '../../data/data'
 import GigCard from '../../components/gigCards/gigCard'
+import { useQuery } from '@tanstack/react-query'
+import newRequest from '../../utils/newRequest'
+import { Audio, CirclesWithBar } from 'react-loader-spinner'
+import axios from 'axios'
+
 
 const Gigs = () => {
   const [open, setOpen] = useState(false)
   const [sort, setSort] = useState('sales')
+  const minRef = useRef()
+  const maxRef = useRef()
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ['repoData'],
+    queryFn: () =>
+     newRequest('/gigs'),
+  })
 
   const reSort = (type) => {
     setSort(type)
     setOpen(false)
   }
+
+  const apply = () => {
+    console.log(minRef.current.value)
+    console.log(maxRef.current.value)
+  }
+
 
   return (
     <div className="gigs">
@@ -26,9 +45,9 @@ const Gigs = () => {
         <div className="menu">
           <div className="left">
             <span>Budget</span>
-            <input type="text" placeholder="min" />
-            <input type="text" placeholder="max" />
-            <button>Apply</button>
+            <input type="text" placeholder="min" ref={minRef} />
+            <input type="text" placeholder="max" ref={maxRef} />
+            <button onClick={apply}>Apply</button>
           </div>
           <div className="right">
             <span className="sortBy">SortBy:</span>
@@ -48,9 +67,26 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-          {gigs.map((gig) => (
-            <GigCard key={gig.id} item={gig} />
-          ))}
+          {isPending ? (
+            <span>
+              <CirclesWithBar
+              height="50"
+              width="50"
+              color="#c42121cc"
+              outerCircleColor="#c42121cc"
+              innerCircleColor="#c42121cc"
+              barColor="#c42121cc"
+              ariaLabel="circles-with-bar-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+            </span> 
+          ) : error ? (
+            'Something went wrong'
+          ) : (
+            gigs.map((gig) => <GigCard key={gig.id} item={gig} />)
+          )}
         </div>
       </div>
     </div>

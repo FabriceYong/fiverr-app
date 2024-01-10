@@ -105,6 +105,10 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+
+            span {
+                margin: auto; 
+            }
         }
     }
 }

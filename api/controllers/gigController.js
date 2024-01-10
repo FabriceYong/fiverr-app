@@ -54,9 +54,9 @@ export const getGigs = async (req, res, next) => {
 
         ...(q.category && {category: q.category}), // check if there's a category option in the query request before making the request
 
-        ...((q.min || q.max) && {price: {...(q.min && { $gt: q.min}), ...(q.max && { $lt: q.max})}}), // find all gigs with prices greater than 100
+        ...((q.min || q.max) && { price: { ...(q.min && {$gt: q.min}), ...(q.max && {$lt: q.max})}}), // find all gigs with prices greater than 100
 
-        ...(q.search && {title: {$regex: q.search, $options: 'i'}}) // find a gig with this specific title & not case sensitive
+        ...(q.search && {title: {$regex: q.search, $options: 'i'}}) // find a gig with this specific title & not case sensitive using the search
     }
 
     try {

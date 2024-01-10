@@ -12,14 +12,23 @@ import Message from './pages/message/Message'
 import Messages from './pages/messages/Messages'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
 
 function App() {
+  const queryClient = new QueryClient()
+
   const Layout = () => {
     return (
       <>
-      <Navbar />
-      <Outlet />
-      <Footer />
+        <QueryClientProvider client={queryClient}>
+          <Navbar />
+          <Outlet />
+          <Footer />
+        </QueryClientProvider>
       </>
     )
   }
@@ -63,12 +72,12 @@ function App() {
         },
         {
           path: '/login',
-          element: <Login />
+          element: <Login />,
         },
         {
           path: '/register',
-          element: <Register />
-        }
+          element: <Register />,
+        },
       ],
     },
   ])
@@ -81,3 +90,18 @@ function App() {
 }
 
 export default App
+
+  // render(
+  //   <CirclesWithBar
+  //     height="100"
+  //     width="100"
+  //     color="#4fa94d"
+  //     outerCircleColor="#4fa94d"
+  //     innerCircleColor="#4fa94d"
+  //     barColor="#4fa94d"
+  //     ariaLabel="circles-with-bar-loading"
+  //     wrapperStyle={{}}
+  //     wrapperClass=""
+  //     visible={true}
+  //   />
+  // )
