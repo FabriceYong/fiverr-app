@@ -1,66 +1,69 @@
 import mongoose from "mongoose";
 
-const GigSchema = mongoose.Schema({
+const GigSchema = mongoose.Schema(
+  {
     userId: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     title: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     desc: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     totalStars: {
-        type: Number,
-        default: 0,
+      type: Number,
+      default: 0,
     },
     starNumber: {
-        type: String,
-        default: 0,
+      type: Number,
+      default: 0,
     },
     category: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     price: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
     cover: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     images: {
-        type: [String],
-        required: false,
+      type: [String],
+      required: false,
     },
     shortDesc: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     shortTitle: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     deliveryTime: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
     revisionNumber: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     features: {
-        type: [String],
-        required: false,
+      type: [String],
+      required: false,
     },
     salesNumber: {
-        type: Number,
-        default: 0,
-    }
-}, { timestamps: true})
+      type: Number,
+      default: 0,
+    },
+  },
+  { timestamps: true }
+)
 
 export default mongoose.model("Gig", GigSchema)

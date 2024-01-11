@@ -106,8 +106,12 @@
             flex-wrap: wrap;
             justify-content: space-between;
 
-            span {
+            span.spinner {
                 margin: auto; 
+            }
+
+            p.error {
+                margin: auto;
             }
         }
     }

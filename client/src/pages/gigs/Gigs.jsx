@@ -1,24 +1,29 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import './gigs.scss'
 import { FaAngleDown, FaChevronDown } from 'react-icons/fa'
-import { gigs } from '../../data/data'
 import GigCard from '../../components/gigCards/gigCard'
 import { useQuery } from '@tanstack/react-query'
 import newRequest from '../../utils/newRequest'
-import { Audio, CirclesWithBar } from 'react-loader-spinner'
-import axios from 'axios'
-
+import { CirclesWithBar } from 'react-loader-spinner'
+import { useLocation } from 'react-router-dom'
 
 const Gigs = () => {
   const [open, setOpen] = useState(false)
   const [sort, setSort] = useState('sales')
   const minRef = useRef()
   const maxRef = useRef()
+  const location = useLocation()
 
-  const { isPending, error, data } = useQuery({
-    queryKey: ['repoData'],
+  const { isPending, error, data, refetch } = useQuery({
+    queryKey: ['gigs'],
     queryFn: () =>
-     newRequest('/gigs'),
+      newRequest
+        .get(
+          `/gigs${location.search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+        )
+        .then((res) => {
+          return res.data
+        }),
   })
 
   const reSort = (type) => {
@@ -26,11 +31,13 @@ const Gigs = () => {
     setOpen(false)
   }
 
-  const apply = () => {
-    console.log(minRef.current.value)
-    console.log(maxRef.current.value)
-  }
+  useEffect(() => {
+    refetch()
+  }, [sort])
 
+  const apply = () => {
+    refetch()
+  }
 
   return (
     <div className="gigs">
@@ -68,24 +75,24 @@ const Gigs = () => {
         </div>
         <div className="cards">
           {isPending ? (
-            <span>
+            <span className="spinner">
               <CirclesWithBar
-              height="50"
-              width="50"
-              color="#c42121cc"
-              outerCircleColor="#c42121cc"
-              innerCircleColor="#c42121cc"
-              barColor="#c42121cc"
-              ariaLabel="circles-with-bar-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />
-            </span> 
+                height="50"
+                width="50"
+                color="#c42121cc"
+                outerCircleColor="#c42121cc"
+                innerCircleColor="#c42121cc"
+                barColor="#c42121cc"
+                ariaLabel="circles-with-bar-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
+            </span>
           ) : error ? (
-            'Something went wrong'
+            <p className="error">Sorry!, something went wrong</p>
           ) : (
-            gigs.map((gig) => <GigCard key={gig.id} item={gig} />)
+            data.map((gig) => <GigCard key={gig._id} item={gig} />)
           )}
         </div>
       </div>

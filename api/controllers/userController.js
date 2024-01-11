@@ -16,3 +16,11 @@ export const delete_user = async (req, res) => {
         res.status(200).send('Account deleted')
     })
 }
+
+export const getUser = async (req, res, next) => {
+    const user = await User.findById(req.params.id)
+
+    if(!user) return next(createError(403, 'Sorry!, something went wrong'))
+
+    res.status(200).send(user)
+}
