@@ -44,7 +44,7 @@ function Register() {
       await newRequest.post('/auth/register', {
         ...user, img: url
       })
-      navigate('/')
+      navigate('/login')
     } catch(err) {
       console.log(err)
     }
