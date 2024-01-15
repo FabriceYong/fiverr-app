@@ -2,120 +2,81 @@ import React from 'react'
 import './orders.scss'
 import { Link } from 'react-router-dom'
 import { MdEmail } from 'react-icons/md'
+import { useQuery } from '@tanstack/react-query'
+import newRequest from '../../utils/newRequest'
+import { CirclesWithBar } from 'react-loader-spinner'
 
 const Orders = () => {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
-    const currentUser = {
-      id: 1,
-      username: 'James bond',
-      isSeller: true,
-      img: './img/james-bond.jpg',
-    }
-    
+  const { isPending, error, data } = useQuery({
+    queryKey: ['orders'],
+    queryFn: () => newRequest.get(`/orders`).then((res) => res.data),
+  })
+
+
   return (
     <div className="orders">
-      <div className="container">
-        <div className="title">
-          <h1>Orders</h1>
-          {/* <Link to={'/add'}>
+      {isPending ? (
+        <span className="spinner">
+          <CirclesWithBar
+            height="25"
+            width="25"
+            color="#c42121cc"
+            outerCircleColor="#c42121cc"
+            innerCircleColor="#c42121cc"
+            barColor="#c42121cc"
+            ariaLabel="circles-with-bar-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />{' '}
+          loading...
+        </span>
+      ) : error ? (
+        <span
+          style={{
+            padding: '0 1px',
+            color: '#c42121cc',
+          }}
+        >
+          Sorry!, error fetching orders
+        </span>
+      ) : (
+        <div className="container">
+          <div className="title">
+            <h1>Orders</h1>
+            {/* <Link to={'/add'}>
             <button>Add New Gig</button>
           </Link> */}
-        </div>
-        <table>
-          <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th>{currentUser?.isSeller ? 'Buyer' : 'Seller'}</th>
-            <th>Contact</th>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/1904dea962bf22b73dad40abb932f116-1703095465/Untitled%20design%20-%202023-12-20T190234.650/create-custom-ai-art-using-midjourney-advanced-ai-tool.png"
-                alt="gig"
-              />
-            </td>
-            <td>Maria Anders</td>
-            <td>11</td>
-            <td>James Bond</td>
-            <td>
-              <MdEmail />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/1904dea962bf22b73dad40abb932f116-1703095465/Untitled%20design%20-%202023-12-20T190234.650/create-custom-ai-art-using-midjourney-advanced-ai-tool.png"
-                alt="gig"
-              />
-            </td>
-            <td>Fransico Chang</td>
-            <td>11</td>
-            <td>James Bond</td>
-            <td>
-              <MdEmail />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/1904dea962bf22b73dad40abb932f116-1703095465/Untitled%20design%20-%202023-12-20T190234.650/create-custom-ai-art-using-midjourney-advanced-ai-tool.png"
-                alt="gig"
-              />
-            </td>
-            <td>Roland Mendel</td>
-            <td>11</td>
-            <td>James Bond</td>
-            <td>
-              <MdEmail />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/1904dea962bf22b73dad40abb932f116-1703095465/Untitled%20design%20-%202023-12-20T190234.650/create-custom-ai-art-using-midjourney-advanced-ai-tool.png"
-                alt="gig"
-              />
-            </td>
-            <td>Helen Bennett</td>
-            <td>11</td>
-            <td>James Bond</td>
-            <td>
-              <MdEmail />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/1904dea962bf22b73dad40abb932f116-1703095465/Untitled%20design%20-%202023-12-20T190234.650/create-custom-ai-art-using-midjourney-advanced-ai-tool.png"
-                alt="gig"
-              />
-            </td>
-            <td>Yoshi Tannamuri</td>
-            <td>11</td>
-            <td>James Bond</td>
-            <td>
-              <MdEmail />
-            </td>
-          </tr>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Contact</th>
+              </tr>
+            </thead>
 
-          <tr>
-            <td>
-              <img
-                src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/1904dea962bf22b73dad40abb932f116-1703095465/Untitled%20design%20-%202023-12-20T190234.650/create-custom-ai-art-using-midjourney-advanced-ai-tool.png"
-                alt="gig"
-              />
-            </td>
-            <td>Giovanni Rovelli</td>
-            <td>11</td>
-            <td>James Bond</td>
-            <td>
-              <MdEmail />
-            </td>
-          </tr>
-        </table>
-      </div>
+            {data.map((order) => (
+              <tbody key={order._id}>
+                <tr>
+                  <td>
+                    <img src={order.img} alt="order img" />
+                  </td>
+                  <td>{order.title}</td>
+                  <td>${order.price}</td>
+                  <td>
+                    <MdEmail />
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+        </div>
+      )}
     </div>
   )
 }

@@ -4,13 +4,7 @@ import { CiSearch } from 'react-icons/ci'
 
 const Featured = () => {
 
-    const currentUser = {
-      id: 1,
-      username: 'James bond',
-      isSeller: true,
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIEQ8A5yC7RR3LH2Ah9K-YZ7Yn9HshI92XvQ&usqp=CAU',
-      jobTitle: 'Commander (Royal Naval Reserve)'
-    }
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
     
   return (
     <div className="featured">
@@ -39,11 +33,11 @@ const Featured = () => {
           />
           <div className="user-info-overlay">
             <div className='left'>
-              <img src={currentUser?.img} alt="profile picture" />
+              <img src={currentUser?.img || './img/user-avatar.jpg'} alt="profile picture" />
             </div>
             <div className="job-title">
-              <p>@{currentUser?.username}</p>
-              <span>{currentUser?.jobTitle}</span>
+              <p>@{currentUser?.username }</p>
+              <span>{currentUser?.country}</span>
             </div>
           </div>
         </div>

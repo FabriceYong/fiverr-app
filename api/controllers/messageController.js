@@ -1,3 +1,30 @@
-export const fn = (req, res) => {
-    res.send('from message controller')
+import createError from '../config/createError.js'
+import Message from '../models/messageModel.js'
+
+export const createMessage = async (req, res, next) => {
+    
+        const newMessage = new Message({
+            conversationId: req.body.conversationId,
+            userId: req.userId,
+            desc: req.body.desc
+        })
+
+    try {
+
+        const savedMessage = await newMessage.save()
+        res.status(200).send(savedMessage)
+    } catch (error) {
+        next(error)
+    }
 }
+
+export const getMessages = async (req, res, next) => {
+    try {
+        const messages = await Message.find({ conversationId: req.params.id })
+
+        res.status(200).send(messages)
+    } catch (error) {
+        next(error)
+    }
+}
+
