@@ -74,7 +74,7 @@ const Login = () => {
               placeholder="**********"
               onChange={handleChange}
             />
-            <FaEye onClick={() => setShowPassword(!showPassword)} />
+            <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
           </div>
         ) : (
           <div className="hide">
@@ -87,7 +87,7 @@ const Login = () => {
               placeholder="**********"
               onChange={handleChange}
             />
-            <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
+            <FaEye onClick={() => setShowPassword(!showPassword)} />
             {/* <span>show</span> */}
           </div>
         )}

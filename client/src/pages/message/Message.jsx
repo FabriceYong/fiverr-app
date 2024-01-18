@@ -1,10 +1,40 @@
 import React from 'react'
 import './message.scss'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { VscSend } from 'react-icons/vsc'
 import { BsSend } from 'react-icons/bs'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import newRequest from '../../utils/newRequest'
+import { CirclesWithBar } from 'react-loader-spinner'
+import moment from 'moment'
 
 const Message = () => {
+  const { id } = useParams()
+  const queryClient = useQueryClient()
+
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ['messages'],
+    queryFn: () => newRequest(`/messages/${id}`).then((res) => res.data),
+  })
+
+  const mutation = useMutation({
+    mutationFn: (message) => {
+      return newRequest.post(`/messages/`, message)
+    },
+    onSuccess: () => queryClient.invalidateQueries(['messages'])
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault(),
+    mutation.mutate({
+      conversationId: id,
+      desc: e.target[0].value
+    })
+    e.target[0].value = ''
+  }
+
   return (
     <div className="message">
       <div className="container">
@@ -12,108 +42,62 @@ const Message = () => {
           <Link to={'/messages'}>MESSAGES</Link> {'>'} JAMES BOND {'>'}
         </span>
 
-        <div className="messages">
-          <div className="item">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ9AMZxFPtoxUHj04B6uFm_rcl27osHxytYg&usqp=CAU"
-              alt="profile image"
-            />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              beatae, aspernatur eius, eligendi illo veritatis quaerat deserunt
-              nam aliquam deleniti non ea reiciendis ullam quos voluptatibus
-              alias similique amet rerum!
-            </p>
+        {isPending ? (
+          <span
+            className="spinner"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: '#c42121cc',
+              justifyContent: 'center',
+              margin: '20px',
+            }}
+          >
+            <CirclesWithBar
+              height="25"
+              width="25"
+              color="#c42121cc"
+              outerCircleColor="#c42121cc"
+              innerCircleColor="#c42121cc"
+              barColor="#c42121cc"
+              ariaLabel="circles-with-bar-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />{' '}
+            loading...
+          </span>
+        ) : error ? (
+          <span
+            style={{
+              padding: '0 1px',
+              textAlign: 'center',
+              color: '#c42121cc',
+            }}
+          >
+            Sorry!, error fetching user information
+          </span>
+        ) : (
+          <div className="messages">
+            {data.map((message) => (
+              <div className={message.userId === currentUser._id ? 'owner item' : "item"} key={message._id}>
+                <img
+                  src={message.userId === currentUser._id ? currentUser.img : './img/user-avatar.jpg'}
+                  alt="profile image"
+                />
+                <p>
+                  {message.desc}
+                  <span>{moment(message.updateAt).fromNow()}</span>
+                </p>
+              </div>
+            ))}
           </div>
-          <div className="item owner">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIEQ8A5yC7RR3LH2Ah9K-YZ7Yn9HshI92XvQ&usqp=CAU"
-              alt="profile image"
-            />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              beatae, aspernatur eius, eligendi illo veritatis quaerat deserunt
-              nam aliquam deleniti non ea reiciendis ullam quos voluptatibus
-              alias similique amet rerum!
-            </p>
-          </div>
-          <div className="item">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ9AMZxFPtoxUHj04B6uFm_rcl27osHxytYg&usqp=CAU"
-              alt="profile image"
-            />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              beatae, aspernatur eius, eligendi illo veritatis quaerat deserunt
-              nam aliquam deleniti non ea reiciendis ullam quos voluptatibus
-              alias similique amet rerum!
-            </p>
-          </div>
-          <div className="item owner">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIEQ8A5yC7RR3LH2Ah9K-YZ7Yn9HshI92XvQ&usqp=CAU"
-              alt="profile image"
-            />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              beatae, aspernatur eius, eligendi illo veritatis quaerat deserunt
-              nam aliquam deleniti non ea reiciendis ullam quos voluptatibus
-              alias similique amet rerum!
-            </p>
-          </div>
-          <div className="item">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ9AMZxFPtoxUHj04B6uFm_rcl27osHxytYg&usqp=CAU"
-              alt="profile image"
-            />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              beatae, aspernatur eius, eligendi illo veritatis quaerat deserunt
-              nam aliquam deleniti non ea reiciendis ullam quos voluptatibus
-              alias similique amet rerum!
-            </p>
-          </div>
-          <div className="item owner">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIEQ8A5yC7RR3LH2Ah9K-YZ7Yn9HshI92XvQ&usqp=CAU"
-              alt="profile image"
-            />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              beatae, aspernatur eius, eligendi illo veritatis quaerat deserunt
-              nam aliquam deleniti non ea reiciendis ullam quos voluptatibus
-              alias similique amet rerum!
-            </p>
-          </div>
-          <div className="item">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ9AMZxFPtoxUHj04B6uFm_rcl27osHxytYg&usqp=CAU"
-              alt="profile image"
-            />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              beatae, aspernatur eius, eligendi illo veritatis quaerat deserunt
-              nam aliquam deleniti non ea reiciendis ullam quos voluptatibus
-              alias similique amet rerum!
-            </p>
-          </div>
-          <div className="item owner">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIEQ8A5yC7RR3LH2Ah9K-YZ7Yn9HshI92XvQ&usqp=CAU"
-              alt="profile image"
-            />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              beatae, aspernatur eius, eligendi illo veritatis quaerat deserunt
-              nam aliquam deleniti non ea reiciendis ullam quos voluptatibus
-              alias similique amet rerum!
-            </p>
-          </div>
-        </div>
+        )}
 
         <hr />
 
-        <div className="write">
+        <form className="write" onSubmit={handleSubmit}>
           <textarea
             name=""
             id="write"
@@ -121,10 +105,10 @@ const Message = () => {
             rows="3"
             placeholder="write a message"
           ></textarea>
-          <button>
+          <button type='submit'>
             <VscSend />
           </button>
-        </div>
+        </form>
       </div>
     </div>
   )

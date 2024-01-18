@@ -1,5 +1,6 @@
 import createError from '../config/createError.js'
 import Message from '../models/messageModel.js'
+import Conversation from '../models/conversationModel.js'
 
 export const createMessage = async (req, res, next) => {
     
@@ -12,7 +13,14 @@ export const createMessage = async (req, res, next) => {
     try {
 
         const savedMessage = await newMessage.save()
-        res.status(200).send(savedMessage)
+        await Conversation.findOneAndUpdate({id: req.body.conversationId }, {
+            $set: {
+                readBySeller: req.isSeller,
+                readByBuyer: !req.isSeller,
+                lastMessage: req.body.desc
+            }
+        }, { new: true })
+        res.status(201).send(savedMessage)
     } catch (error) {
         next(error)
     }

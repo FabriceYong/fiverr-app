@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './messages.scss'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { MdEmail } from 'react-icons/md'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import newRequest from '../../utils/newRequest'
@@ -9,6 +9,7 @@ import moment from 'moment'
 
 const Messages = () => {
   const queryClient = useQueryClient()
+  const { id } = useParams()
   const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   const { isPending, error, data } = useQuery({
@@ -85,7 +86,7 @@ const Messages = () => {
             <tbody>
               {data.map((conversation) => (
                 <tr
-                  className={((currentUser.isSeller && !conversation.readBySeller) || (!currentUser.isSeller && !conversation.readByBuyer)) && 'active'}
+                  className={((currentUser.isSeller && !conversation.readBySeller) || (!currentUser.isSeller && !conversation.readByBuyer)) ? 'active' : ''}
                   key={conversation.id}
                 >
                   <td>
