@@ -39,7 +39,7 @@ const Message = () => {
     <div className="message">
       <div className="container">
         <span className="breadCrumbs">
-          <Link to={'/messages'}>MESSAGES</Link> {'>'} JAMES BOND {'>'}
+          <Link to={'/messages'}>MESSAGES</Link> {'>'} {currentUser.username.toUpperCase()} {'>'}
         </span>
 
         {isPending ? (
